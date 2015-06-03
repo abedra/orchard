@@ -1,41 +1,20 @@
 package com.aaronbedra.orchard;
 
-import java.math.BigInteger;
 import java.net.InetAddress;
-import java.net.UnknownHostException;
 
 public class CIDR {
-    private int mask;
-    private InetAddress convertedBase;
     private int baseInt;
     private int baseEndInt;
 
-    public CIDR(final String block) throws InvalidCIDRException {
-        String[] parts = block.split("/");
-        this.mask = Integer.parseInt(parts[1]);
-        try {
-            this.convertedBase = InetAddress.getByName(parts[0]);
-        } catch (UnknownHostException e) {
-            throw new InvalidCIDRException("Invalid Base Address for CIDR Block");
-        }
-        this.baseInt = addressToInt(convertedBase);
-        this.baseInt &= ~((1 << 32 - this.mask) - 1);
-        this.baseEndInt = baseInt + (1 << 32 - this.mask);
+    public CIDR(final InetAddress base, final int mask) throws OrchardAddressException {
+        this.baseInt = ipv4toint(base);
+        this.baseInt &= ~((1 << 32 - mask) - 1);
+        this.baseEndInt = baseInt + (1 << 32 - mask);
     }
 
-    public boolean contains(String address) throws InvalidCIDRException {
-        InetAddress convertedAddress = null;
-        try {
-            convertedAddress = InetAddress.getByName(address);
-        } catch (UnknownHostException e) {
-            throw new InvalidCIDRException("Invalid Comparison Address");
-        }
-        int possible = addressToInt(convertedAddress);
-        return possible >= baseInt && possible <= baseEndInt;
-    }
-
-    private int addressToInt(InetAddress address) {
-        return ipv4toint(address);
+    public boolean contains(InetAddress address) throws OrchardAddressException {
+        int addressInt = ipv4toint(address);
+        return addressInt >= baseInt && addressInt <= baseEndInt;
     }
 
     private static int ipv4toint(InetAddress address) {
