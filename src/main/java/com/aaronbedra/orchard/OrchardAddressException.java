@@ -1,7 +1,7 @@
 package com.aaronbedra.orchard;
 
 public class OrchardAddressException extends Exception {
-    public OrchardAddressException(String message) {
+    public OrchardAddressException(final String message) {
         super(message);
     }
 }
