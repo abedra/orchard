@@ -4,7 +4,13 @@ A CIDR processing library for Java. Supports IPv4 and IPv6 Addresses.
 
 ## Installation
 
-TODO: Add this after maven central release
+```xml
+<dependency>
+    <groupId>com.aaronbedra</groupId>
+    <artifactId>orchard</artifactId>
+    <version>0.0.1</version>
+</dependency>
+```
 
 ## Usage
 
