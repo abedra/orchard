@@ -14,12 +14,10 @@ A CIDR processing library for Java. Supports IPv4 and IPv6 Addresses.
 
 ## Usage
 
-The `Orchard` class has just one method, `isAddressInCidr`, that takes an address to compare and a CIDR block to compare it against. For example:
-
 ```java
-import com.aaronbedra.orchard.Orchard;
+import com.aaronbedra.orchard.CIDR;
 
-if (Orchard.isAddressInCidr("1.1.1.20", "1.1.1.0/24") {
+if (CIDR.valueOf("1.1.1.0/24").contains("1.1.1.2")) {
   // do stuff
 } else {
   // do other stuff
