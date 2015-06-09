@@ -17,7 +17,7 @@ public class CIDR4 implements CIDR {
     }
 
     @Override
-    public boolean contains(String address) throws OrchardException {
+    public final boolean contains(final String address) throws OrchardException {
         if (address == null) {
             throw new OrchardException("Address cannot be null");
         }
