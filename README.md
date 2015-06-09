@@ -8,7 +8,7 @@ A CIDR processing library for Java. Supports IPv4 and IPv6 Addresses.
 <dependency>
     <groupId>com.aaronbedra</groupId>
     <artifactId>orchard</artifactId>
-    <version>0.0.1</version>
+    <version>0.0.2</version>
 </dependency>
 ```
 
