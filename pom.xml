@@ -32,7 +32,7 @@
 
     <groupId>com.aaronbedra</groupId>
     <artifactId>orchard</artifactId>
-    <version>0.0.3-SNAPSHOT</version>
+    <version>0.0.4</version>
 
     <build>
         <plugins>
