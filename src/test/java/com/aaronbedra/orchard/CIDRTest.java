@@ -6,8 +6,14 @@ import static org.junit.Assert.assertEquals;
 
 public class CIDRTest {
     @Test
+    public void testUPv4InDefaultRoute() throws OrchardException {
+        assertEquals(true, CIDR.valueOf("0.0.0.0/0").contains("1.42.1.42"));
+    }
+
+    @Test
     public void testIPv4InBlock() throws OrchardException {
-        assertEquals(true, CIDR.valueOf("1.1.1.0/24").contains("1.1.1.15"));
+        assertEquals(true, CIDR.valueOf("1.1.1.0/1").contains("0.0.0.0"));
+        assertEquals(true, CIDR.valueOf("1.1.1.0/1").contains("127.255.255.255"));
     }
 
     @Test
