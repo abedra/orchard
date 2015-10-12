@@ -8,8 +8,10 @@ public class CIDR6 implements CIDR {
     private static final int MASKSHIFT = 128;
     private BigInteger start;
     private BigInteger end;
+    private int mask;
 
     public CIDR6(final InetAddress base, final int mask) throws OrchardException {
+        this.mask = mask;
         BigInteger baseInt = ipv6toint(base);
         BigInteger bigMask = deriveMask(mask);
         start = baseInt.and(bigMask);
@@ -29,6 +31,11 @@ public class CIDR6 implements CIDR {
         } catch (UnknownHostException e) {
             throw new OrchardException("Invalid IP Address");
         }
+    }
+
+    @Override
+    public int getMask() {
+        return mask;
     }
 
     private static BigInteger ipv6toint(final InetAddress address) {
