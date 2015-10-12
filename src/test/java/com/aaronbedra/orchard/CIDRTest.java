@@ -63,6 +63,12 @@ public class CIDRTest {
         CIDR.valueOf("1.1.1.0/33").contains("1.1.1.15");
     }
 
+    @Test
+    public void testIPv4CIDRCanGetMask() throws OrchardException {
+        assertEquals(CIDR.valueOf("1.1.1.0/32").getMask(), 32);
+        assertEquals(CIDR.valueOf("1.1.1.0/0").getMask(), 0);
+    }
+
     @Test(expected = OrchardException.class)
     public void testIPv6CIDRWithLowMask() throws OrchardException {
         CIDR.valueOf("1fff:0:0a88:85a3:0:0:ac1f:8001/0")
@@ -73,5 +79,11 @@ public class CIDRTest {
     public void testIPv6CIDRWithHighMask() throws OrchardException {
         CIDR.valueOf("1fff:0:0a88:85a3:0:0:ac1f:8001/129")
                 .contains("1fff:0:0a88:85a3:0:0:ac1f:8002");
+    }
+
+    @Test
+    public void testIPv6CIDRCanGetMask() throws OrchardException {
+        assertEquals(CIDR.valueOf("1fff:0:0a88:85a3:0:0:ac1f:8001/128").getMask(), 128);
+        assertEquals(CIDR.valueOf("1fff:0:0a88:85a3:0:0:ac1f:8001/8").getMask(), 8);
     }
 }
