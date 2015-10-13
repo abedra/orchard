@@ -34,7 +34,7 @@ public class CIDR4 implements CIDR {
     }
 
     @Override
-    public int getMask() {
+    public final int getMask() {
         return mask;
     }
 

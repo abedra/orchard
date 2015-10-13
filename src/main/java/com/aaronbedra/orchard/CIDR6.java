@@ -34,7 +34,7 @@ public class CIDR6 implements CIDR {
     }
 
     @Override
-    public int getMask() {
+    public final int getMask() {
         return mask;
     }
 
