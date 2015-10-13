@@ -8,7 +8,7 @@ A CIDR processing library for Java. Supports IPv4 and IPv6 Addresses.
 <dependency>
     <groupId>com.aaronbedra</groupId>
     <artifactId>orchard</artifactId>
-    <version>0.0.4</version>
+    <version>0.1.1</version>
 </dependency>
 ```
 
@@ -22,4 +22,10 @@ if (CIDR.valueOf("1.1.1.0/24").contains("1.1.1.2")) {
 } else {
   // do other stuff
 }
+```
+
+```java
+import com.aaronbedra.orchard.CIDR;
+
+int mask = CIDR.valueOf("1.1.1.0/24").getMask();
 ```
