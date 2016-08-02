@@ -7,13 +7,15 @@ public class CIDR4 implements CIDR {
     private static final int MASKSHIFT = 32;
     private static final int ADRSHIFT = 8;
     private static final int ADRAND = 0xFF;
+    private InetAddress address;
     private long baseLong;
     private long baseEndLong;
     private int mask;
 
-    public CIDR4(final InetAddress base, final int mask) throws OrchardException {
+    public CIDR4(final InetAddress address, final int mask) throws OrchardException {
+        this.address = address;
         this.mask = mask;
-        this.baseLong = ipv4tolong(base);
+        this.baseLong = ipv4tolong(address);
         this.baseLong &= ~((1L << MASKSHIFT - mask) - 1);
         this.baseEndLong = baseLong + (1L << MASKSHIFT - mask);
     }
@@ -31,6 +33,11 @@ public class CIDR4 implements CIDR {
         } catch (UnknownHostException e) {
             throw new OrchardException("Invalid IP address");
         }
+    }
+
+    @Override
+    public final InetAddress getAddress() {
+        return address;
     }
 
     @Override

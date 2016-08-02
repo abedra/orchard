@@ -61,5 +61,7 @@ public interface CIDR {
 
     boolean contains(String address) throws OrchardException;
 
+    InetAddress getAddress();
+
     int getMask();
 }
