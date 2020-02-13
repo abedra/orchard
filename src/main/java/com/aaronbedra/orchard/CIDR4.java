@@ -45,6 +45,11 @@ public class CIDR4 implements CIDR {
         return mask;
     }
 
+    @Override
+    public String toString() {
+        return getAddress().getHostAddress() + "/" + getMask();
+    }
+
     private static long ipv4tolong(final InetAddress address) {
         int net = 0;
         for (byte adr : address.getAddress()) {

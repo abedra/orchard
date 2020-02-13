@@ -96,5 +96,14 @@ public class CIDRTest {
     public void testIPv6CIDRCanGetAddress() throws OrchardException {
         assertEquals(CIDR.valueOf("1fff:0:a88:85a3:0:0:ac1f:8001/128").getAddress().getHostAddress(), "1fff:0:a88:85a3:0:0:ac1f:8001");
     }
-    
+
+    @Test
+    public void testCIDR4toString() throws OrchardException {
+        assertEquals("1.1.1.0/24", CIDR.valueOf("1.1.1.0/24").toString());
+    }
+
+    @Test
+    public void testCIDR6toString() throws OrchardException {
+        assertEquals("1fff:0:a88:85a3:0:0:ac1f:8001/128", CIDR.valueOf("1fff:0:a88:85a3:0:0:ac1f:8001/128").toString());
+    }
 }

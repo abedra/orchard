@@ -45,6 +45,11 @@ public class CIDR6 implements CIDR {
         return mask;
     }
 
+    @Override
+    public String toString() {
+        return getAddress().getHostAddress() + "/" + getMask();
+    }
+
     private static BigInteger ipv6toint(final InetAddress address) {
         return new BigInteger(address.getAddress());
     }
