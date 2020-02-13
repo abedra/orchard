@@ -23,8 +23,12 @@
     </developers>
 
     <scm>
+        <connection>scm:git:git@github.com:abedra/orchard.git</connection>
+        <developerConnection>scm:git:git@github.com:abedra/orchard.git</developerConnection>
         <url>https://github.com/abedra/orchard</url>
+        <tag>HEAD</tag>
     </scm>
+
 
     <properties>
         <project.build.sourceEncoding>UTF-8</project.build.sourceEncoding>
@@ -32,7 +36,7 @@
 
     <groupId>com.aaronbedra</groupId>
     <artifactId>orchard</artifactId>
-    <version>1.0.0</version>
+    <version>1.0.0-SNAPSHOT</version>
 
     <build>
         <plugins>
