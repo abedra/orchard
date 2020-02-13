@@ -12,11 +12,11 @@ public class CIDR4 implements CIDR {
     private long baseEndLong;
     private int mask;
 
-    public CIDR4(final InetAddress address, final int mask) throws OrchardException {
+    public CIDR4(final InetAddress address, final int mask) {
         this.address = address;
         this.mask = mask;
         this.baseLong = ipv4tolong(address);
-        this.baseLong &= ~((1L << MASKSHIFT - mask) - 1);
+        this.baseLong &= -(1L << MASKSHIFT - mask);
         this.baseEndLong = baseLong + (1L << MASKSHIFT - mask);
     }
 

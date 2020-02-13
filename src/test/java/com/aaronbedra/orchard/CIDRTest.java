@@ -2,34 +2,34 @@ package com.aaronbedra.orchard;
 
 import org.junit.Test;
 
-import static org.junit.Assert.assertEquals;
+import static org.junit.Assert.*;
 
 public class CIDRTest {
     @Test
     public void testIPv4InDefaultRoute() throws OrchardException {
-        assertEquals(true, CIDR.valueOf("0.0.0.0/0").contains("1.42.1.42"));
+        assertTrue(CIDR.valueOf("0.0.0.0/0").contains("1.42.1.42"));
     }
 
     @Test
     public void testIPv4InBlock() throws OrchardException {
-        assertEquals(true, CIDR.valueOf("1.1.1.0/1").contains("0.0.0.0"));
-        assertEquals(true, CIDR.valueOf("1.1.1.0/1").contains("127.255.255.255"));
+        assertTrue(CIDR.valueOf("1.1.1.0/1").contains("0.0.0.0"));
+        assertTrue(CIDR.valueOf("1.1.1.0/1").contains("127.255.255.255"));
     }
 
     @Test
     public void testIPv4NotInBlock() throws OrchardException {
-        assertEquals(false, CIDR.valueOf("1.1.1.0/24").contains("1.1.2.15"));
+        assertFalse(CIDR.valueOf("1.1.1.0/24").contains("1.1.2.15"));
     }
 
     @Test
     public void testIPv6InBlock() throws OrchardException {
-        assertEquals(true, CIDR.valueOf("1fff:0:0a88:85a3:0:0:ac1f:8001/24")
+        assertTrue(CIDR.valueOf("1fff:0:0a88:85a3:0:0:ac1f:8001/24")
                 .contains("1fff:0:0a88:85a3:0:0:ac1f:8002"));
     }
 
     @Test
     public void testIPv6NotInBlock() throws OrchardException {
-        assertEquals(false, CIDR.valueOf("1fff:0:0a88:85a3:0:0:ac1f:8001/128")
+        assertFalse(CIDR.valueOf("1fff:0:0a88:85a3:0:0:ac1f:8001/128")
                 .contains("1fff:0:0a88:85a3:0:0:ac1f:8002"));
     }
 

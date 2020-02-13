@@ -11,7 +11,7 @@ public class CIDR6 implements CIDR {
     private InetAddress address;
     private int mask;
 
-    public CIDR6(final InetAddress address, final int mask) throws OrchardException {
+    public CIDR6(final InetAddress address, final int mask) {
         this.address = address;
         this.mask = mask;
         BigInteger baseInt = ipv6toint(address);
