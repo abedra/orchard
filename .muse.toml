@@ -1,1 +1,2 @@
-build = "mvn test"
+build = "mvn"
+jdk11 = true
